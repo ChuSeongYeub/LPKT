@@ -77,13 +77,13 @@ class LPKTNet(nn.Module):
 
         # Predicting Layer_1
         # input = exercise (t+1) + h (t)
-        self.predicting_layer_1 = nn.Linear(self.d_k * 2, self.d_k)
-        torch.nn.init.xavier_normal_(self.predicting_layer.weight)
+        self.predicting_layer_1 = nn.Linear(self.d_k * 2, 1)
+        torch.nn.init.xavier_normal_(self.predicting_layer_1.weight)
 
         # Predicting Layer_2
         # input = exercise (t+1) + h (t)
-        self.predicting_layer_2 = nn.ReLu(self.d_k, 1)
-        torch.nn.init.xavier_normal_(self.predicting_layer.weight)
+        self.predicting_layer_2 = nn.ReLU()
+        # torch.nn.init.xavier_normal_(self.predicting_layer_2.weight)
 
     def forward(self, exercise_id,  ans_time, interval_time, option_value, answer_value):
         '''
